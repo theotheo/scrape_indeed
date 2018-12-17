@@ -36,6 +36,9 @@ if __name__ == '__main__':
 
         for el in Selector.css('.row.result'):
             job = {}
+            company_url = el.css('.company a').attrib.get('href')
+            if company_url:
+                job['company_url'] = "{}{}".format(BASE_URL, company_url)
             job['company_name'] = el.xpath('string(.//*[@class="company"])').get().strip()
             job['title'] = el.xpath('string(.//h2/*)').get()
             job['link'] = "{}{}".format(BASE_URL, el.css('a').attrib['href'])
