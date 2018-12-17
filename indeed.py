@@ -49,6 +49,7 @@ if __name__ == '__main__':
             logging.debug(job)
             jobs.append(job)
 
-    df = pd.DataFrame(jobs)
+        df = pd.DataFrame(jobs)
     
-    df.to_csv('{}__{}.csv'.format(args.country, args.q), index=False)
+        with open('{}__{}.csv'.format(args.country, args.q), 'a') as f:
+            df.to_csv(f, index=False, mode='a', header=f.tell()==0)
