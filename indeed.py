@@ -15,6 +15,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     BASE_URL = 'http://{}.indeed.com'.format(args.country)
+    if args.country == 'us':
+        BASE_URL = 'http://.indeed.com'
     
     params = {
         'q': args.q,
